@@ -1,0 +1,243 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --primary: #00d9ff;
+  --primary-foreground: #0f1419;
+  --sidebar-primary: #00d9ff;
+  --sidebar-primary-foreground: #0f1419;
+  --chart-1: #00d9ff;
+  --chart-2: #ff00ff;
+  --chart-3: #00ff88;
+  --chart-4: #ffd700;
+  --chart-5: #ff6b9d;
+  --radius: 0.75rem;
+  --background: #0f1419;
+  --foreground: #e8e8ff;
+  --card: rgba(30, 30, 50, 0.4);
+  --card-foreground: #e8e8ff;
+  --popover: rgba(30, 30, 50, 0.5);
+  --popover-foreground: #e8e8ff;
+  --secondary: rgba(0, 217, 255, 0.15);
+  --secondary-foreground: #00d9ff;
+  --muted: rgba(255, 255, 255, 0.1);
+  --muted-foreground: #a0a0b0;
+  --accent: #00d9ff;
+  --accent-foreground: #0f1419;
+  --destructive: #ff1744;
+  --destructive-foreground: #0f1419;
+  --border: rgba(0, 217, 255, 0.2);
+  --input: rgba(30, 30, 50, 0.6);
+  --ring: #00d9ff;
+  --sidebar: rgba(30, 30, 50, 0.4);
+  --sidebar-foreground: #e8e8ff;
+  --sidebar-accent: #00d9ff;
+  --sidebar-accent-foreground: #0f1419;
+  --sidebar-border: rgba(0, 217, 255, 0.2);
+  --sidebar-ring: #00d9ff;
+}
+
+.dark {
+  --primary: #00d9ff;
+  --primary-foreground: #0f1419;
+  --sidebar-primary: #00d9ff;
+  --sidebar-primary-foreground: #0f1419;
+  --background: #0f1419;
+  --foreground: #e8e8ff;
+  --card: rgba(30, 30, 50, 0.4);
+  --card-foreground: #e8e8ff;
+  --popover: rgba(30, 30, 50, 0.5);
+  --popover-foreground: #e8e8ff;
+  --secondary: rgba(0, 217, 255, 0.15);
+  --secondary-foreground: #00d9ff;
+  --muted: rgba(255, 255, 255, 0.1);
+  --muted-foreground: #a0a0b0;
+  --accent: #00d9ff;
+  --accent-foreground: #0f1419;
+  --destructive: #ff1744;
+  --destructive-foreground: #0f1419;
+  --border: rgba(0, 217, 255, 0.2);
+  --input: rgba(30, 30, 50, 0.6);
+  --ring: #00d9ff;
+  --chart-1: #00d9ff;
+  --chart-2: #ff00ff;
+  --chart-3: #00ff88;
+  --chart-4: #ffd700;
+  --chart-5: #ff6b9d;
+  --sidebar: rgba(30, 30, 50, 0.4);
+  --sidebar-foreground: #e8e8ff;
+  --sidebar-accent: #00d9ff;
+  --sidebar-accent-foreground: #0f1419;
+  --sidebar-border: rgba(0, 217, 255, 0.2);
+  --sidebar-ring: #00d9ff;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  /* Glassmorphism glass effect */
+  .glass {
+    @apply backdrop-blur-xl bg-card border border-border;
+    background: rgba(30, 30, 50, 0.4);
+    border: 1px solid rgba(0, 217, 255, 0.2);
+  }
+
+  /* Neon glow effect */
+  .neon-glow {
+    @apply shadow-lg;
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.3), 0 0 40px rgba(0, 217, 255, 0.1);
+  }
+
+  .neon-glow-active {
+    box-shadow: 0 0 30px rgba(0, 217, 255, 0.6), 0 0 60px rgba(0, 217, 255, 0.3);
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+      max-width: 1280px;
+    }
+  }
+}
+
+/* Custom animations */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.3), 0 0 40px rgba(0, 217, 255, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(0, 217, 255, 0.6), 0 0 60px rgba(0, 217, 255, 0.3);
+  }
+}
+
+@keyframes float-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes voice-wave {
+  0%, 100% {
+    height: 20%;
+  }
+  50% {
+    height: 100%;
+  }
+}
+
+@keyframes slide-in-bottom {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+.animate-float-up {
+  animation: float-up 0.6s ease-out;
+}
+
+.animate-voice-wave {
+  animation: voice-wave 0.6s ease-in-out infinite;
+}
+
+.animate-slide-in-bottom {
+  animation: slide-in-bottom 0.4s ease-out;
+}
